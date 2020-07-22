@@ -399,8 +399,17 @@ if py3:
         return inspect.getsource(obj)
 
 
+    def get_file_unicode(obj):
+        """Returns a decoded file where object was defined"""
+        return inspect.getfile(obj)
+
 else:
 
     def get_source_unicode(obj):
         """Returns a decoded source of object"""
         return inspect.getsource(obj).decode(get_encoding(obj))
+
+
+    def get_file_unicode(obj):
+        """Returns a decoded file where object was defined"""
+        return inspect.getfile(obj).decode(get_encoding(obj))
